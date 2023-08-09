@@ -1,0 +1,66 @@
+{
+    "name": "mmaturax/yii2-empty-project",
+    "description": "Yii 2 Basic Empty Project Template.",
+    "keywords": ["yii2", "framework", "basic", "project template"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "*",
+        "rmrevin/yii2-minify-view": "*",
+        "richardfan1126/yii2-js-register": "*",
+        "tpmanc/yii2-imagick": "*"
+
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*",
+        "codeception/base": "*",
+        "codeception/verify": "*",
+        "codeception/specify": "*"
+    },
+    "config": {
+        "vendor-dir": "_app/vendor",
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "_app/runtime": "0777",
+                    "_app/yii": "0755",
+                    "assets": "0755",
+                    "uploads": "0777"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "_app/config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "_app/vendor/npm",
+            "bower-asset-library": "_app/vendor/bower"
+        }
+    }
+}
