@@ -10,7 +10,7 @@
 
 `docker-compose -f docker-compose.prod.yml up --build --force-recreate --remove-orphans`
 
-(ждем строчку `kachuko.frontend exited with code 0`)
+(ждем строчку `weatherapp.frontend exited with code 0`)
 
 когда запустится, установить зависимости бэка в другой сессии терминала:
 
