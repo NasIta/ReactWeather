@@ -10,7 +10,9 @@
 
 `docker-compose -f docker-compose.prod.yml up --build --force-recreate --remove-orphans`
 
-установить зависимости бэка:
+(ждем строчку `kachuko.frontend exited with code 0`)
+
+когда запустится, установить зависимости бэка в другой сессии терминала:
 
 `docker exec -i weatherapp.php composer install`
 
