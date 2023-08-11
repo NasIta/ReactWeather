@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  weatherapp.frontend:
+    user: "1000:50"
+    container_name: weatherapp.frontend
+    ports:
+      - "8080:8080"
+    image: node:18-alpine
+    volumes:
+      - ./frontend:/var/www/app:cached
+    command: /bin/sh -c "yarn && yarn build"
+    working_dir: "/var/www/app"
+    depends_on:
+      - weatherapp.nginx
+#    restart: always
+
+  weatherapp.nginx:
+    container_name: weatherapp.nginx
+    ports:
+      - "8001:8001"
+    image: nginx:stable-alpine
+    volumes:
+      - ./:/app
+      - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+      - weatherapp.php
+
+  weatherapp.php:
+    container_name: weatherapp.php
+    build: docker/php
+    volumes:
+      - ./:/app
+    depends_on:
+      - weatherapp.db
+    restart: unless-stopped
+
+  weatherapp.db:
+    container_name: weatherapp.db
+    image: postgres:13-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=weatherapp
+      - POSTGRES_USER=weatherapp
+      - POSTGRES_PASSWORD=weatherapp
+    volumes:
+      - weatherapp.db.data:/var/lib/postgresql/data
+
+volumes:
+  weatherapp.db.data:

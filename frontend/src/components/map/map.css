@@ -1,0 +1,27 @@
+.weather-map {
+  height: 400px;
+  padding: 0 80px;
+  position: relative;
+  display: flex;
+  z-index: 1;
+}
+
+.weather-map__hat {
+  height: 60px;
+  min-width: 600px;
+  position: absolute;
+  background-color: #282c34;
+  z-index: 2;
+  opacity: 80%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 100px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-map__table {
+  width: 100%;
+}
