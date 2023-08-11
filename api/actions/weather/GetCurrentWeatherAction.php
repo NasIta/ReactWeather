@@ -23,7 +23,6 @@ final class GetCurrentWeatherAction extends DataHandler
 
     protected function _run(): Result
     {
-//        $apiKey = '13e0f52f988d786d0068cfdc2ce12bf7';
         $apiKey = Yii::$app->params['weatherApiKey'];
         $url = "https://api.openweathermap.org/data/2.5/weather?lat=$this->latitude&lon=$this->longitude&appid=$apiKey";
 
