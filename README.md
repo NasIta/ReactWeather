@@ -13,7 +13,7 @@
 Затем открыть\
 [http://localhost:8001](http://localhost:8001) для просмотра в браузере.
 
-##Стоп проекта
+## Стоп проекта
 
 ### `Ctrl+C`
  `docker-compose -f docker-compose.prod.yml down`
